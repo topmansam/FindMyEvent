@@ -3,6 +3,17 @@
     <style name="Base.Theme.FindMyEvent" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <!-- Secondary bar color -->
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorSecondaryVariant">@color/secondary</item>
+        <item name="colorOnSecondary">@color/black</item>
+
+        <!-- status bar. -->
+        <item name="android:statusBarColor">@color/primary</item>
     </style>
 
     <style name="Theme.FindMyEvent" parent="Base.Theme.FindMyEvent" />
