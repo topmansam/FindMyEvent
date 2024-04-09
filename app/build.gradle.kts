@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.findmyevent"
-        minSdk = 23
+        minSdk = 24
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -30,6 +30,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 }
+
 
 dependencies {
 
