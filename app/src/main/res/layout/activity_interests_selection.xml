@@ -29,6 +29,15 @@
             android:layout_height="match_parent" />
 
     </LinearLayout>
+    <EditText
+        android:id="@+id/editText_custom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter custom text"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:inputType="text"/>
 
     <Button
         android:id="@+id/interestsSelectButton"
