@@ -14,8 +14,8 @@ public class InterestsSelectionActivity extends Activity {
     RecyclerView recyclerView;
 
     // Using ArrayList to store images data
-    ArrayList interestImg = new ArrayList<>(Arrays.asList(R.drawable.swim_logo));
-    ArrayList interestName = new ArrayList<>(Arrays.asList("swim"));
+    ArrayList interestImg = new ArrayList<>(Arrays.asList(R.drawable.swim_logo,R.drawable.hike_logo,R.drawable.film_logo));
+    ArrayList interestName = new ArrayList<>(Arrays.asList("swim","hike","film"));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
