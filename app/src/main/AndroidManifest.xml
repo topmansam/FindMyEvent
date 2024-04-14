@@ -14,19 +14,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FindMyEvent"
-        tools:targetApi="31">
-        <activity
-            android:name=".homePage"
-            android:exported="false" />
+        tools:targetApi="31"
+        tools:ignore="ExtraText">
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".homePage"
+            android:exported="false"/>
+
+        <activity
+            android:name=".EventListActivity"
+            android:exported="false"/>
+
+        <!-- EventDetailActivity with dialog theme -->
+        <activity
+            android:name=".EventDetailActivity"
+            android:theme="@style/Theme.AppCompat.Dialog" />?<!-- Assuming you have a Dialog style defined -->
+        android:exported="false"/>
+
     </application>
 
 </manifest>

@@ -33,19 +33,18 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         loginBtn = findViewById(R.id.loginButton);
+
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 EditText et = findViewById(R.id.userEmail);
                 EditText pt = findViewById(R.id.userPassword);
-                email = String.valueOf(et.getText());
-                password = String.valueOf(pt.getText());
+                email = et.getText().toString();
+                password = pt.getText().toString();
 
-                writeToFile("Email :"+email+"\nPassword :"+password, MainActivity.this);
-
-                Intent intentMain = new Intent(MainActivity.this, homePage.class);
-                startActivity(intentMain);
-
+                // Instead of going to homePage, go directly to EventListActivity
+                Intent intentToEventList = new Intent(MainActivity.this, EventListActivity.class);
+                startActivity(intentToEventList);
             }
         });
     }
