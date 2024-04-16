@@ -18,6 +18,7 @@ public class homePage extends AppCompatActivity {
     TextView nameTV, passwordTV;
     LinkedList<String> inf = new LinkedList<>();
     String password;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +33,8 @@ public class homePage extends AppCompatActivity {
 
         passwordTV = findViewById(R.id.textView4);
         passwordTV.setText(password);
+
+
     }
 
     private void readFile(Context context){
