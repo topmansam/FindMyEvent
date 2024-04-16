@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "499617223699",
+    "project_id": "findmyevent-be1a5",
+    "storage_bucket": "findmyevent-be1a5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:499617223699:android:9452516bc314fee1011be6",
+        "android_client_info": {
+          "package_name": "com.example.findmyevent"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCepPs50No9TF4iO4B_mmIk5-AUiITiNk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
