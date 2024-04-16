@@ -7,12 +7,12 @@
     android:layout_height="match_parent"
     android:background="@color/green"
 
-    tools:context=".MainActivity">
+    tools:context=".signUp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/cardView"
+        android:layout_above="@+id/signUp"
         android:layout_marginBottom="0dp"
         android:gravity="center"
         android:orientation="vertical"
@@ -36,7 +36,7 @@
     </LinearLayout>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
+        android:id="@+id/signUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -53,15 +53,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Welcome"
+                android:text="Welcome to FindMyEvent"
                 android:textColor="@color/primary"
-                android:textSize="32sp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Please login with your information"
-                android:alpha="0.7"/>
+                android:textSize="30sp"/>
 
             <View
                 android:layout_width="wrap_content"
@@ -71,12 +65,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Email Address"
-                android:labelFor="@id/userEmail"
+                android:labelFor="@id/RegisteredEmail"
                 android:alpha="0.7"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:id="@+id/userEmail"
+                android:id="@+id/RegisteredEmail"
+                android:inputType="textEmailAddress"
+                android:drawableEnd="@drawable/done_icon"/>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Username"
+                android:labelFor="@id/RegisteredUsername"
+                android:alpha="0.7"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:id="@+id/RegisteredUsername"
                 android:inputType="textEmailAddress"
                 android:drawableEnd="@drawable/done_icon"/>
 
@@ -88,44 +99,43 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Password"
-                android:labelFor="@id/userPassword"
+                android:labelFor="@id/RegisteredPassword"
                 android:alpha="0.7"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:id="@+id/userPassword"
-                android:inputType="textEmailAddress"
+                android:id="@+id/RegisteredPassword"
+                android:inputType="textPassword"
                 android:drawableEnd="@drawable/password_icon"/>
 
-            <RelativeLayout
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Confirm Password"
+                android:labelFor="@id/RegisteredConfirmPassword"
+                android:alpha="0.7"/>
+            <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="48dp"
+                android:id="@+id/RegisteredConfirmPassword"
+                android:inputType="textPassword"
+                android:drawableEnd="@drawable/password_icon"/>
 
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Remember me"
-                    android:alpha="0.7"/>
 
-                <TextView
-                    android:id="@+id/forgotButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="forgot my password"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"/>
-
-            </RelativeLayout>
 
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="10dp"/>
 
             <Button
-                android:id="@+id/loginButton"
+                android:id="@+id/signUpButton"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:text="Login"
+                android:text="SignUp"
                 android:textSize="20sp" />
 
         </LinearLayout>
