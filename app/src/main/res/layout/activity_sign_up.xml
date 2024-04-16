@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/green"
 
-    tools:context=".signUp">
+    tools:context=".signUP">
 
     <LinearLayout
         android:layout_width="match_parent"

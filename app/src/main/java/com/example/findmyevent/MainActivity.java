@@ -96,7 +96,7 @@ public class MainActivity extends Activity {
     }
 
     private void sendtoNextActivity() {
-        Intent intent1 = new Intent(MainActivity.this, homePage.class);
+        Intent intent1 = new Intent(MainActivity.this, InterestsSelectionActivity.class);
         intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent1);
     }
