@@ -61,7 +61,7 @@ public class MainActivity extends Activity {
                 if(!email.matches(emailPattern)){
                     et.setError("Invalid email syntax.");
                 }else if(password.isEmpty() || password.length() < 6){
-                    pt.setError("Password must be atleast 6 letters");
+                    pt.setError("Password must be at least 6 letters");
                 }else{
                     pD.setTitle("Loging in!");
                     pD.setMessage("Please wait while we Log you in");
