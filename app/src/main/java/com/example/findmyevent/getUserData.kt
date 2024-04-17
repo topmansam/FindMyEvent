@@ -18,7 +18,7 @@ class getUserData(private val listener : onDataFetchedListener):
         try{
             var url: URL = URL(mongoDBApiUrl)
             var urlConnection: HttpURLConnection = url.openConnection() as HttpURLConnection
-            var inputStreamReader = InputStreamReader(urlConnection.inputStream)
+            var inputStreamReader = InputStreamReader(urlConnection.inputStream)`w
             var bufferedReader = BufferedReader(inputStreamReader)
 
             var stringBuilder = StringBuilder()
