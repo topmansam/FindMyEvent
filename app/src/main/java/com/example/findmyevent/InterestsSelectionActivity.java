@@ -1,6 +1,7 @@
 package com.example.findmyevent;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Adapter;
@@ -64,14 +65,21 @@ public class InterestsSelectionActivity extends Activity {
             @Override
             public void onClick(View v) {
                 String selected = "";
-                Boolean[] checked = adapter.getSelectedIds();
-                ArrayList<String> interestName = adapter.getInterestName();
+                Boolean[] checked = adapter.getSelectedIds(); // Array of Boolean representing each interest's selection state
+                ArrayList<String> interestNames = adapter.getInterestName(); // List of interest names
                 for (int i = 0; i < checked.length; i++) {
                     if (checked[i] != null && checked[i]) {
-                        selected += interestName.get(i) + ",";
+                        selected += interestNames.get(i) + ",";
                     }
                 }
-                Toast.makeText(InterestsSelectionActivity.this, selected, Toast.LENGTH_SHORT).show();
+                // Remove the last comma
+                if (!selected.isEmpty()) {
+                    selected = selected.substring(0, selected.length() - 1);
+                }
+
+                Intent intent = new Intent(InterestsSelectionActivity.this, EventListActivity.class);
+                intent.putExtra("selectedInterests", selected); // Pass the concatenated string
+                startActivity(intent);
             }
         });
     }

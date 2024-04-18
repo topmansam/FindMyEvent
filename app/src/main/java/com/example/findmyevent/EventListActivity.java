@@ -48,14 +48,17 @@ public class EventListActivity extends AppCompatActivity {
         eventAdapter = new EventAdapter(eventList);
         eventsRecyclerView.setAdapter(eventAdapter);
 
-        loadEvents(); // Load events from API
-        //fetchEvents(); // Load events using HttpURLConnection
+        // Retrieve the selected interests passed from InterestsSelectionActivity
+        String selectedInterests = getIntent().getStringExtra("selectedInterests");
+        Log.d("EventListActivity", "Received interests: " + selectedInterests);
+
+        loadEvents(selectedInterests);// Load events from API
     }
 
-    private void loadEvents() {
+    private void loadEvents(String selectedInterests) {
         TicketmasterApi api = RetrofitClient.getClient("https://app.ticketmaster.com/discovery/v2/").create(TicketmasterApi.class);
-        //Call<EventResponse> call = api.searchEvents("GoeK5VydqGc4q81CAX80AHGURWhnacLW", "Music", "en-us");
-        Call<EventResponse> call = api.searchEvents("GoeK5VydqGc4q81CAX80AHGURWhnacLW");
+        Call<EventResponse> call = api.searchEvents("GoeK5VydqGc4q81CAX80AHGURWhnacLW", selectedInterests, "en-us");
+
         call.enqueue(new Callback<EventResponse>() {
             @Override
             public void onResponse(@NonNull Call<EventResponse> call, @Nullable Response<EventResponse> response) {
@@ -65,13 +68,11 @@ public class EventListActivity extends AppCompatActivity {
                         eventList.clear();
                         eventList.addAll(events);
                         eventAdapter.notifyDataSetChanged();
-                        Log.d("API Call", "Success: Loaded " + events.size() + " events.");
-                        Log.d("API Call", "Events updated. List size: " + eventList.size()); // Add this line
+                        Log.d("API Call", "Success: Loaded " + events.size() + " events. For interests: " + selectedInterests);
                     } else {
-                        Log.e("API Call", "No events to load");
+                        Log.d("API Call", "No events to load for interests: " + selectedInterests);
                     }
                 } else {
-                    // Response was not successful; log status code and error body
                     Log.e("API Call", "Response not successful: " + response.code());
                     try {
                         if (response.errorBody() != null) {
@@ -86,48 +87,12 @@ public class EventListActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<EventResponse> call, Throwable t) {
-                Log.e("API Failure", t.getMessage());
+                Log.e("API Failure", "Error loading events for " + selectedInterests + ": " + t.getMessage());
             }
         });
     }
 
-    private void fetchEvents() {
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    URL url = new URL("https://app.ticketmaster.com/discovery/v2/events.json?apikey=GoeK5VydqGc4q81CAX80AHGURWhnacLW&classificationName=Music&locale=en-us");
-                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                    conn.setRequestMethod("GET");
-                    conn.connect();
 
-                    int responseCode = conn.getResponseCode();
-                    if (responseCode == HttpURLConnection.HTTP_OK) {
-                        BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                        String inputLine;
-                        StringBuilder response = new StringBuilder();
-                        while ((inputLine = in.readLine()) != null) {
-                            response.append(inputLine);
-                        }
-                        in.close();
-                        // Process the response on the main thread
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                updateUI(response.toString()); // Update your UI with the response
-                            }
-                        });
-                    } else {
-                        Log.e("HTTP Error", "HTTP error code: " + responseCode);
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    Log.e("Network Error", "Error fetching events: " + e.getMessage());
-                }
-            }
-        });
-        thread.start();
-    }
     private void updateUI(String jsonResponse) {
         Gson gson = new Gson();
         EventResponse eventResponse = gson.fromJson(jsonResponse, EventResponse.class);
