@@ -15,6 +15,9 @@ import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 import java.util.List;
 
+/*
+* Handles the event data and prepares it to be displayed in list format with recylerview
+* */
 
 public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHolder> {
     private List<Event> events;
@@ -44,7 +47,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
                     .networkPolicy(NetworkPolicy.NO_CACHE)
                     .into(holder.eventImage);
         } else {
-            holder.eventImage.setImageResource(R.drawable.ic_launcher_foreground); // Ensure you have a default_image in your drawable folder
+            holder.eventImage.setImageResource(R.drawable.ic_launcher_foreground);
         }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +56,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
                 intent.putExtra("EVENT_NAME", event.getName());
                 intent.putExtra("EVENT_ID", event.getId());
                 intent.putExtra("EVENT_URL", event.getUrl());
-                // Pass other details as needed
+
                 view.getContext().startActivity(intent);
             }
         });

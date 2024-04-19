@@ -13,7 +13,9 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.List;
-
+/*
+* Class for when we click an individual event.
+* */
 public class EventDetailActivity extends AppCompatActivity {
 
     @Override

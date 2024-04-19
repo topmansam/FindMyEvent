@@ -29,12 +29,14 @@ import retrofit2.Response;
 import java.util.ArrayList;
 import java.util.List;
 import java.net.URL;
-
+/*
+* List all events using Event Adapter to display in list format.
+* */
 public class EventListActivity extends AppCompatActivity {
 
     private RecyclerView eventsRecyclerView;
     private EventAdapter eventAdapter;
-    private List<Event> eventList; // Assuming Event is a class you have defined to hold event data
+    private List<Event> eventList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +56,8 @@ public class EventListActivity extends AppCompatActivity {
 
         loadEvents(selectedInterests);// Load events from API
     }
-
+    // We use Retrofit by square, an open source library to make API calls simpler and more maintanable. No need for httpurl conenction and deserialization
+    // https://square.github.io/retrofit/
     private void loadEvents(String selectedInterests) {
         TicketmasterApi api = RetrofitClient.getClient("https://app.ticketmaster.com/discovery/v2/").create(TicketmasterApi.class);
         Call<EventResponse> call = api.searchEvents("GoeK5VydqGc4q81CAX80AHGURWhnacLW", selectedInterests, "en-us");

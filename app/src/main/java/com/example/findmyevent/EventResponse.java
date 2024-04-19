@@ -2,7 +2,9 @@ package com.example.findmyevent;
 
 
 import java.util.List;
-
+/*
+* Handle the response from ticketmaster API
+* */
 public class EventResponse {
     private Embedded _embedded;  // This field must match the key in the JSON response
 

@@ -4,6 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+/**
+ * Event class to represent all information pertaining to an  event.
+ */
 public class Event {
     @SerializedName("name")
     private String name;
