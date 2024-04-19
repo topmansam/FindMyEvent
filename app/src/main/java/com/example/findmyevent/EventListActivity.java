@@ -16,6 +16,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -37,7 +39,7 @@ public class EventListActivity extends AppCompatActivity {
     private RecyclerView eventsRecyclerView;
     private EventAdapter eventAdapter;
     private List<Event> eventList;
-
+    private TextView textViewNoEvents;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +47,8 @@ public class EventListActivity extends AppCompatActivity {
 
         eventsRecyclerView = findViewById(R.id.eventsRecyclerView);
         eventsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        textViewNoEvents = findViewById(R.id.textViewNoEvents); // Ensure this is initialized here
 
         eventList = new ArrayList<>();
         eventAdapter = new EventAdapter(eventList);
@@ -54,7 +58,7 @@ public class EventListActivity extends AppCompatActivity {
         String selectedInterests = getIntent().getStringExtra("selectedInterests");
         Log.d("EventListActivity", "Received interests: " + selectedInterests);
 
-        loadEvents(selectedInterests);// Load events from API
+        loadEvents(selectedInterests); // Load events from API
     }
     // We use Retrofit by square, an open source library to make API calls simpler and more maintanable. No need for httpurl conenction and deserialization
     // https://square.github.io/retrofit/
@@ -71,26 +75,20 @@ public class EventListActivity extends AppCompatActivity {
                         eventList.clear();
                         eventList.addAll(events);
                         eventAdapter.notifyDataSetChanged();
-                        Log.d("API Call", "Success: Loaded " + events.size() + " events. For interests: " + selectedInterests);
+                        textViewNoEvents.setVisibility(View.GONE); // Hide the no events text
                     } else {
-                        Log.d("API Call", "No events to load for interests: " + selectedInterests);
+                        textViewNoEvents.setVisibility(View.VISIBLE); // Show the no events text
                     }
                 } else {
+                    textViewNoEvents.setVisibility(View.VISIBLE); // Show the no events text if response not successful
                     Log.e("API Call", "Response not successful: " + response.code());
-                    try {
-                        if (response.errorBody() != null) {
-                            String errorBody = response.errorBody().string();
-                            Log.e("API Error Body", errorBody);
-                        }
-                    } catch (IOException e) {
-                        Log.e("API Call", "Error reading error body", e);
-                    }
                 }
             }
 
             @Override
             public void onFailure(Call<EventResponse> call, Throwable t) {
-                Log.e("API Failure", "Error loading events for " + selectedInterests + ": " + t.getMessage());
+                textViewNoEvents.setVisibility(View.VISIBLE); // Show the no events text on failure
+                Log.e("API Failure", "Error loading events: " + t.getMessage());
             }
         });
     }
