@@ -94,24 +94,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:id="@+id/userPassword"
-                android:inputType="textEmailAddress"
+                android:inputType="textPassword"
                 android:drawableEnd="@drawable/password_icon"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Remember me"
-                    android:alpha="0.7"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"/>
 
-                <TextView
-                    android:id="@+id/forgotButton"
+                <Button
+                    android:id="@+id/signupBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="forgot my password"
+                    android:text="signup"
+                    android:textStyle="bold"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"/>
 
